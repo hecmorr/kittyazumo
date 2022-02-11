@@ -12,18 +12,16 @@ class AppState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        //Initialize instance of the provider
-        ChangeNotifierProvider(
-          create: (_) => GifProvider(),
-          lazy: false,
-        ),
-      ],
+    return MultiProvider(providers: [
+      //Initialize instance of the provider
+      ChangeNotifierProvider(
+        create: (_) => GifProvider(),
+        lazy: false,
+      ),
+    ], child: MyApp()
 
-      //This child calls the main application (MyApp)
-      child: MyApp(),
-    );
+        //This child calls the main application (MyApp)
+        );
   }
 }
 

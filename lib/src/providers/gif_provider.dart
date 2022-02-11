@@ -6,12 +6,13 @@ class GifProvider extends ChangeNotifier {
   String? _baseUrl = 'cataas.com';
   String? _gif = '/cat/gif';
 
-  String? onDisplayGif;
+  String _gif_url = '';
+
+  // String? onDisplayGif;
 
   GifProvider() {
-    print('Gif provider initialized');
-    draw();
-
+    _gif_url = getOnDisplayGif();
+    print('Gif Provider initialized');
     // getOnDisplayGif('');
   }
 
@@ -26,8 +27,10 @@ class GifProvider extends ChangeNotifier {
     }
   }
 
-  void draw() {
+  get gif_url => _gif_url;
+
+  void draw(String url) {
+    _gif_url = url;
     notifyListeners();
-    getOnDisplayGif();
   }
 }
