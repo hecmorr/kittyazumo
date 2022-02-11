@@ -6,6 +6,8 @@ class GifProvider extends ChangeNotifier {
   String? _baseUrl = 'cataas.com';
   String? _gif = '/cat/gif';
 
+  NetworkImage? onDisplayGif;
+
   GifProvider() {
     print('Gif provider initialized');
 
@@ -17,6 +19,8 @@ class GifProvider extends ChangeNotifier {
     var url = Uri.https(_baseUrl!, _gif!);
     final response = await http.get(url);
     // final decodedData = json.decode(response.body);
-    print(response.body);
+    onDisplayGif = NetworkImage(response.body);
+    // print(response.body);
+    notifyListeners();
   }
 }

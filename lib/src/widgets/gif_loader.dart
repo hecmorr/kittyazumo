@@ -3,12 +3,14 @@ import 'package:kitty_azumo/src/providers/gif_provider.dart';
 import 'package:provider/provider.dart';
 
 class GifLoader extends StatelessWidget {
-  const GifLoader({Key? key}) : super(key: key);
+  const GifLoader({Key? key, required this.gif}) : super(key: key);
+
+  final gif;
 
   @override
   Widget build(BuildContext context) {
     final _screenSize = MediaQuery.of(context).size;
-    final provider = Provider.of<GifProvider>(context);
+    final gifProvider = Provider.of<GifProvider>(context);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
