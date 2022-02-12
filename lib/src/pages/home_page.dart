@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
       body: CustomPaint(
         key: key,
         painter: BackgroundPainter(),
-        child: GifLoader(),
+        child: const GifLoader(),
       ),
     );
   }
