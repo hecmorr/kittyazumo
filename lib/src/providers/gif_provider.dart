@@ -8,12 +8,9 @@ class GifProvider extends ChangeNotifier {
 
   String _gif_url = '';
 
-  // String? onDisplayGif;
-
   GifProvider() {
     _gif_url = getOnDisplayGif();
     print('Gif Provider initialized');
-    // getOnDisplayGif('');
   }
 
   //Method that will get the gifs from the API
