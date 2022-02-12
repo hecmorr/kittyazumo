@@ -3,7 +3,7 @@ import 'package:kitty_azumo/src/pages/home_page.dart';
 import 'package:kitty_azumo/src/providers/gif_provider.dart';
 import 'package:provider/provider.dart';
 
-void main() => runApp(AppState());
+void main() => runApp(const AppState());
 
 //This class will handle the state of the provider
 
@@ -18,7 +18,7 @@ class AppState extends StatelessWidget {
         create: (_) => GifProvider(),
         lazy: false,
       ),
-    ], child: MyApp()
+    ], child: const MyApp()
 
         //This child calls the main application (MyApp)
         );
@@ -26,6 +26,8 @@ class AppState extends StatelessWidget {
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
