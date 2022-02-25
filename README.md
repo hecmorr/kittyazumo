@@ -1,4 +1,4 @@
-# kitty_app by Hector Morales
+# kitty_azumo by Hector Morales
 
 ### Built With
 
@@ -26,7 +26,7 @@ A flutter application that fetches cat's gifs whevener the "Meooww" button is pr
 
 git clone [repo_url]
 
-cd kitty_app
+cd kittyazumo
 
 flutter pub get
 
