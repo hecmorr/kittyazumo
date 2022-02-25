@@ -1,25 +1,34 @@
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:kitty_azumo/network/api.dart';
+import 'package:path/path.dart';
 
 class GifProvider extends ChangeNotifier {
-  GifProvider() {
-    _gifUrl = getOnDisplayGif();
-  }
+  ///
+  GifProvider(this._api);
+  final Api _api;
 
-  final String _baseUrl = 'cataas.com';
-  final String _gif = '/cat/gif';
+  File? catGIf;
+  bool isLoading = false;
 
-  String _gifUrl = '';
+  Future<void> fetchGif() async {
+    isLoading = true;
+    notifyListeners();
+    final response = await _api.getGif();
 
-  //Method that will get the gifs from the API
-  String getOnDisplayGif() {
-    var url = Uri.https(_baseUrl, _gif);
-    return url.toString();
-  }
+    final Directory appDir = await getApplicationDocumentsDirectory();
 
-  String get gifUrl => _gifUrl;
+    /// Generate Image Name
+    const String imageName = 'catgif';
 
-  void draw(String url) {
-    _gifUrl = url;
+    /// Create Empty File in app dir & fill with new image
+    final File file = File(join(appDir.path, imageName));
+
+    file.writeAsBytesSync(response);
+
+    catGIf = file;
+    isLoading = false;
     notifyListeners();
   }
 }

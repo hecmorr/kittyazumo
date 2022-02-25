@@ -1,4 +1,6 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:kitty_azumo/network/api.dart';
 import 'package:kitty_azumo/src/pages/home_page.dart';
 import 'package:kitty_azumo/src/providers/gif_provider.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +17,13 @@ class AppState extends StatelessWidget {
     return MultiProvider(providers: [
       //Initialize instance of the provider
       ChangeNotifierProvider(
-        create: (_) => GifProvider(),
+        create: (_) => GifProvider(
+          Api(
+            Dio(
+              BaseOptions(responseType: ResponseType.bytes),
+            ),
+          ),
+        )..fetchGif(),
         lazy: false,
       ),
     ], child: const MyApp()

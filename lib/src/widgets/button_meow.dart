@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:kitty_azumo/src/providers/gif_provider.dart';
 import 'package:kitty_azumo/src/widgets/glass_morphism.dart';
+
 import 'package:provider/provider.dart';
 
 class ButtonMeow extends StatelessWidget {
@@ -12,15 +14,15 @@ class ButtonMeow extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        //The # so the call to the API could be refreshed
-        gifProvider.draw(gifProvider.gifUrl + '#');
+        gifProvider.fetchGif();
+        PaintingBinding.instance?.imageCache?.clear();
       },
       child: const GlassMorphism(
         blur: 20,
         opacity: 0.3,
         child: SizedBox(
           child: Padding(
-            padding: EdgeInsets.only(left: 8, top: 4),
+            padding: EdgeInsets.only(left: 10, top: 4, right: 6, bottom: 4),
             child: Text(
               'Meeooww',
               style: TextStyle(
